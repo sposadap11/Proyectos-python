@@ -1,0 +1,21 @@
+id,nombre,email,ciudad,telefono,fecha_registro
+1001,Juan Pérez,juan.perez@email.com,Madrid,+34 600 123 456,2023-01-15
+1002,María García,maria.garcia@email.com,Barcelona,+34 600 234 567,2023-02-20
+1003,Carlos López,carlos.lopez@email.com,Valencia,+34 600 345 678,2023-03-10
+1004,Ana Martín,ana.martin@email.com,Sevilla,+34 600 456 789,2023-04-05
+1005,Luis Rodríguez,luis.rodriguez@email.com,Bilbao,+34 600 567 890,2023-05-12
+1006,Carmen Sánchez,carmen.sanchez@email.com,Málaga,+34 600 678 901,2023-06-18
+1007,David Jiménez,david.jimenez@email.com,Zaragoza,+34 600 789 012,2023-07-25
+1008,Elena Ruiz,elena.ruiz@email.com,Murcia,+34 600 890 123,2023-08-30
+1009,Pedro Moreno,pedro.moreno@email.com,Palma,+34 600 901 234,2023-09-14
+1010,Sofia Torres,sofia.torres@email.com,Las Palmas,+34 600 012 345,2023-10-22
+1011,Roberto Silva,roberto.silva@email.com,Alicante,+34 600 123 456,2023-11-08
+1012,Laura Vega,laura.vega@email.com,Córdoba,+34 600 234 567,2023-12-15
+1013,Miguel Castro,miguel.castro@email.com,Valladolid,+34 600 345 678,2024-01-03
+1014,Isabel Morales,isabel.morales@email.com,Vigo,+34 600 456 789,2024-01-10
+1015,Fernando Herrera,fernando.herrera@email.com,Gijón,+34 600 567 890,2024-01-12
+1016,Patricia Luna,patricia.luna@email.com,Oviedo,+34 600 678 901,2024-01-14
+1017,Ricardo Mendoza,ricardo.mendoza@email.com,Santander,+34 600 789 012,2024-01-16
+1018,Monica Ortega,monica.ortega@email.com,Pamplona,+34 600 890 123,2024-01-18
+1019,Hector Vargas,hector.vargas@email.com,Logroño,+34 600 901 234,2024-01-20
+1020,Veronica Rojas,veronica.rojas@email.com,Burgos,+34 600 012 345,2024-01-22 

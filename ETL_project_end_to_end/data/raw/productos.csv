@@ -1,0 +1,12 @@
+id,nombre,categoria,precio,stock,descripcion
+101,Laptop HP Pavilion,Electrónicos,29.99,50,Laptop de 15 pulgadas con procesador Intel
+102,Smartphone Samsung Galaxy,Electrónicos,49.99,30,Teléfono inteligente con cámara de 48MP
+103,Auriculares Bluetooth,Accesorios,19.99,100,Auriculares inalámbricos con cancelación de ruido
+104,Tablet iPad,Electrónicos,39.99,25,Tablet de 10 pulgadas con iOS
+105,Cargador USB-C,Accesorios,15.99,200,Cargador rápido de 20W para dispositivos USB-C
+106,Monitor Gaming,Electrónicos,89.99,15,Monitor de 27 pulgadas 144Hz para gaming
+107,Teclado Mecánico,Accesorios,25.99,75,Teclado mecánico con switches Cherry MX
+108,Mouse Gaming,Accesorios,12.99,150,Mouse gaming con sensor óptico de alta precisión
+109,Consola PlayStation 5,Electrónicos,199.99,10,Consola de videojuegos de última generación
+110,Webcam HD,Accesorios,35.99,40,Cámara web de 1080p para videoconferencias
+111,Disco Duro Externo,Accesorios,22.99,60,Disco duro externo de 1TB USB 3.0 

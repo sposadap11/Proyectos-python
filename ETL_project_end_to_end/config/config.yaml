@@ -1,0 +1,92 @@
+# Configuración del Proyecto ETL
+project:
+  name: "ETL E-commerce Analytics"
+  version: "1.0.0"
+  description: "Pipeline ETL para análisis de ventas de e-commerce"
+
+# Configuración de rutas
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed"
+  data_reports: "data/reports"
+  logs: "logs"
+  config: "config"
+
+# Configuración de base de datos
+database:
+  type: "sqlite"
+  path: "data/processed/ecommerce_analytics.db"
+  tables:
+    - "ventas"
+    - "productos"
+    - "clientes"
+    - "categorias"
+
+# Configuración de logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  files:
+    info: "logs/info.log"
+    error: "logs/error.log"
+    debug: "logs/debug.log"
+
+# Configuración de APIs
+api:
+  base_url: "https://api.ejemplo.com"
+  timeout: 30
+  retries: 3
+  headers:
+    User-Agent: "ETL-Pipeline/1.0"
+
+# Configuración de procesamiento
+processing:
+  batch_size: 1000
+  max_workers: 4
+  chunk_size: 10000
+
+# Configuración de reportes
+reports:
+  output_format: ["csv", "html"]
+  include_charts: true
+  chart_format: "png"
+  report_title: "Reporte de Análisis E-commerce"
+
+# Configuración de validación
+validation:
+  required_columns:
+    ventas: ["id", "fecha", "producto_id", "cliente_id", "cantidad", "precio"]
+    productos: ["id", "nombre", "categoria", "precio"]
+    clientes: ["id", "nombre", "email", "ciudad"]
+  
+  data_types:
+    ventas:
+      id: "int"
+      fecha: "datetime"
+      producto_id: "int"
+      cliente_id: "int"
+      cantidad: "int"
+      precio: "float"
+    
+    productos:
+      id: "int"
+      nombre: "str"
+      categoria: "str"
+      precio: "float"
+    
+    clientes:
+      id: "int"
+      nombre: "str"
+      email: "str"
+      ciudad: "str"
+
+# Configuración de limpieza de datos
+cleaning:
+  remove_duplicates: true
+  fill_missing:
+    strategy: "forward"
+    numeric: 0
+    categorical: "Unknown"
+  outliers:
+    method: "iqr"
+    threshold: 1.5 

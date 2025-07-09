@@ -1,0 +1,274 @@
+# =============================================================================
+# COMPETITIVE PRICE INTELLIGENCE PLATFORM - CONFIGURATION
+# =============================================================================
+
+# =============================================================================
+# PATHS AND DIRECTORIES
+# =============================================================================
+paths:
+  data:
+    raw: "data/raw"
+    processed: "data/processed"
+    reports: "data/reports"
+    warehouse: "data/warehouse.db"
+  logs: "logs"
+  dbt_project: "dbt_project"
+  config: "config"
+
+# =============================================================================
+# DATABASE CONFIGURATION
+# =============================================================================
+database:
+  type: "duckdb"
+  url: "duckdb:///data/warehouse.db"
+  pool_size: 10
+  max_overflow: 20
+  pool_timeout: 30
+  echo: false
+
+# =============================================================================
+# MINIO/S3 CONFIGURATION
+# =============================================================================
+storage:
+  type: "minio"
+  endpoint: "localhost:9000"
+  access_key: "minioadmin"
+  secret_key: "minioadmin"
+  bucket_name: "price-intelligence"
+  secure: false
+  region: "us-east-1"
+
+# =============================================================================
+# SCRAPING CONFIGURATION
+# =============================================================================
+scraping:
+  delay: 2
+  timeout: 30
+  retries: 3
+  user_agent_rotation: true
+  use_proxies: false
+  max_concurrent_requests: 16
+  download_delay: 1
+  respect_robots_txt: true
+  
+  # Competidores configurados
+  competitors:
+    amazon:
+      enabled: true
+      base_url: "https://www.amazon.com"
+      categories:
+        - "electronics"
+        - "books"
+        - "home"
+      max_pages: 10
+      products_per_page: 48
+      
+    mercadolibre:
+      enabled: true
+      base_url: "https://www.mercadolibre.com"
+      categories:
+        - "computacion"
+        - "libros"
+        - "hogar"
+      max_pages: 10
+      products_per_page: 50
+      
+    ebay:
+      enabled: true
+      base_url: "https://www.ebay.com"
+      categories:
+        - "electronics"
+        - "books"
+        - "home"
+      max_pages: 10
+      products_per_page: 50
+
+# =============================================================================
+# DATA PROCESSING CONFIGURATION
+# =============================================================================
+processing:
+  batch_size: 1000
+  chunk_size: 100
+  parallel_workers: 4
+  
+  # Configuración de limpieza
+  cleaning:
+    remove_duplicates: true
+    fill_missing_values: true
+    validate_prices: true
+    normalize_text: true
+    
+  # Configuración de transformación
+  transformation:
+    currency_conversion: true
+    price_normalization: true
+    category_mapping: true
+    brand_extraction: true
+
+# =============================================================================
+# ANALYTICS CONFIGURATION
+# =============================================================================
+analytics:
+  # Configuración de análisis de competitividad
+  competitiveness:
+    price_threshold: 0.10  # 10% de diferencia
+    market_share_calculation: true
+    price_elasticity_analysis: true
+    
+  # Configuración de alertas
+  alerts:
+    price_drop_threshold: 0.15  # 15% de caída
+    price_increase_threshold: 0.20  # 20% de aumento
+    new_competitor_threshold: 0.05  # 5% de diferencia
+    
+  # Configuración de reportes
+  reports:
+    daily_summary: true
+    weekly_analysis: true
+    monthly_trends: true
+    competitor_comparison: true
+
+# =============================================================================
+# MONITORING CONFIGURATION
+# =============================================================================
+monitoring:
+  check_interval_minutes: 30
+  alert_channels:
+    - "email"
+    - "slack"
+    - "webhook"
+  
+  # Métricas a monitorear
+  metrics:
+    - "price_changes"
+    - "competitor_activity"
+    - "data_quality"
+    - "system_performance"
+    
+  # Configuración de dashboards
+  dashboards:
+    grafana_url: "http://localhost:3000"
+    prometheus_url: "http://localhost:9090"
+
+# =============================================================================
+# NOTIFICATIONS CONFIGURATION
+# =============================================================================
+notifications:
+  email:
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    username: ""
+    password: ""
+    from_address: ""
+    to_addresses: []
+    
+  slack:
+    webhook_url: ""
+    channel: "#price-alerts"
+    
+  webhook:
+    url: ""
+    headers: {}
+    timeout: 30
+
+# =============================================================================
+# DBT CONFIGURATION
+# =============================================================================
+dbt:
+  project_name: "competitive_pricing"
+  target: "dev"
+  threads: 4
+  profiles_dir: "./dbt_project"
+  
+  # Configuración de modelos
+  models:
+    staging:
+      materialized: "view"
+    marts:
+      materialized: "table"
+    intermediate:
+      materialized: "incremental"
+      
+  # Configuración de tests
+  tests:
+    severity: "warn"
+    store_failures: true
+
+# =============================================================================
+# LOGGING CONFIGURATION
+# =============================================================================
+logging:
+  level: "INFO"
+  format: "json"
+  file: "logs/app.log"
+  max_size: "100MB"
+  backup_count: 5
+  
+  # Configuración por módulo
+  modules:
+    scrapers: "INFO"
+    transformers: "INFO"
+    loaders: "INFO"
+    analytics: "INFO"
+    orchestration: "INFO"
+
+# =============================================================================
+# SECURITY CONFIGURATION
+# =============================================================================
+security:
+  encryption_enabled: true
+  api_key_required: true
+  rate_limiting: true
+  max_requests_per_minute: 100
+  
+  # Configuración de autenticación
+  authentication:
+    type: "jwt"
+    secret_key: "your-secret-key-here"
+    token_expiry_hours: 24
+
+# =============================================================================
+# PERFORMANCE CONFIGURATION
+# =============================================================================
+performance:
+  cache_enabled: true
+  cache_ttl: 3600
+  connection_pooling: true
+  query_optimization: true
+  
+  # Configuración de paralelización
+  parallelization:
+    max_workers: 4
+    chunk_size: 1000
+    batch_size: 100
+
+# =============================================================================
+# DATA RETENTION CONFIGURATION
+# =============================================================================
+retention:
+  raw_data_days: 90
+  processed_data_days: 365
+  reports_days: 30
+  logs_days: 60
+  
+  # Configuración de limpieza automática
+  cleanup:
+    enabled: true
+    schedule: "0 2 * * *"  # Diario a las 2 AM
+    dry_run: false
+
+# =============================================================================
+# DEVELOPMENT CONFIGURATION
+# =============================================================================
+development:
+  debug_mode: false
+  test_data_enabled: true
+  mock_scraping: false
+  local_storage: true
+  
+  # Configuración de testing
+  testing:
+    unit_tests: true
+    integration_tests: true
+    data_quality_tests: true
+    performance_tests: true 
